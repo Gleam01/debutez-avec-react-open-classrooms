@@ -12,14 +12,17 @@ function ShoppingList() {
   return (
     <div>
       <ul>
-        {categories.map((category, index) => (
-          <li key={`${category}-${index}`}>{category}</li>
+        {categories.map((category) => (
+          <li key={`${category}`}>{category}</li>
         ))}
       </ul>
 
       <ul>
         {plantList.map((plant) => (
-          <li key={`${plant.id}`}>{plant.name}</li>
+          // <li key={`${plant.id}`}>{plant.name} {plant.isBestSale ? <span>🔥</span> : null}</li>
+          <li key={`${plant.id}`}>
+            {plant.name} {plant.isBestSale && <span>🔥</span>}
+          </li>
         ))}
       </ul>
     </div>
