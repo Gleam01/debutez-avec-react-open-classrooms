@@ -1,18 +1,28 @@
+import { plantList } from "../datas/plantList";
+
 function ShoppingList() {
-  const plantList = [
-    "monstera",
-    "ficus lyrata",
-    "pothos argenté",
-    "yucca",
-    "palmier",
-  ];
+  const categories = plantList.reduce((acc, obj) => {
+    if (!acc.includes(obj.category)) {
+      acc.push(obj.category);
+    }
+    return acc;
+  }, []);
+  console.log(categories);
 
   return (
-    <ul>
-      {plantList.map((plant, index) => (
-        <li key={`${plant}-${index}`}>{plant}</li>
-      ))}
-    </ul>
+    <div>
+      <ul>
+        {categories.map((category, index) => (
+          <li key={`${category}-${index}`}>{category}</li>
+        ))}
+      </ul>
+
+      <ul>
+        {plantList.map((plant) => (
+          <li key={`${plant.id}`}>{plant.name}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
